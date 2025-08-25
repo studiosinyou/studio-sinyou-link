@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Studio Sinyou • Flow Nouveau</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Inter,Helvetica,Arial,sans-serif;margin:0;padding:2rem;line-height:1.5}
+    a{color:#111}
+    main{max-width:640px;margin:auto}
+    ul{padding-left:1.1rem}
+    code{background:#f4f4f4;padding:0.1rem 0.3rem;border-radius:4px}
+  </style>
+</head>
+<body>
+<main>
+  <h1>Studio Sinyou</h1>
+  <p>Sending you to your local Amazon store for <em>Design Coloring Book: Flow Nouveau Florals Vol. 1</em>.</p>
+  <p>If this page does not redirect, use a link below.</p>
+  <ul id="links">
+    <li><a href="https://www.amazon.com/dp/B0FNNBLF8G">Amazon US</a></li>
+    <li><a href="https://www.amazon.co.uk/dp/B0FNNBLF8G">Amazon UK</a></li>
+    <li><a href="https://www.amazon.de/dp/B0FNNBLF8G">Amazon Germany</a></li>
+    <li><a href="https://www.amazon.fr/dp/B0FNNBLF8G">Amazon France</a></li>
+    <li><a href="https://www.amazon.it/dp/B0FNNBLF8G">Amazon Italy</a></li>
+    <li><a href="https://www.amazon.es/dp/B0FNNBLF8G">Amazon Spain</a></li>
+    <li><a href="https://www.amazon.nl/dp/B0FNNBLF8G">Amazon Netherlands</a></li>
+    <li><a href="https://www.amazon.se/dp/B0FNNBLF8G">Amazon Sweden</a></li>
+    <li><a href="https://www.amazon.pl/dp/B0FNNBLF8G">Amazon Poland</a></li>
+    <li><a href="https://www.amazon.com.be/dp/B0FNNBLF8G">Amazon Belgium</a></li>
+    <li><a href="https://www.amazon.ca/dp/B0FNNBLF8G">Amazon Canada</a></li>
+    <li><a href="https://www.amazon.com.au/dp/B0FNNBLF8G">Amazon Australia</a></li>
+    <li><a href="https://www.amazon.co.jp/dp/B0FNNBLF8G">Amazon Japan</a></li>
+    <li><a href="https://www.amazon.com.mx/dp/B0FNNBLF8G">Amazon Mexico</a></li>
+  </ul>
+  <p style="font-size:0.95rem;color:#333">Manual override. Add <code>?store=se</code> or <code>?store=uk</code> to the URL.</p>
+</main>
+
+<script>
+(function(){
+  const asin = "B0FNNBLF8G";
+  const map = {
+    "GB":"https://www.amazon.co.uk/dp/"+asin,
+    "DE":"https://www.amazon.de/dp/"+asin,
+    "FR":"https://www.amazon.fr/dp/"+asin,
+    "IT":"https://www.amazon.it/dp/"+asin,
+    "ES":"https://www.amazon.es/dp/"+asin,
+    "NL":"https://www.amazon.nl/dp/"+asin,
+    "SE":"https://www.amazon.se/dp/"+asin,
+    "PL":"https://www.amazon.pl/dp/"+asin,
+    "BE":"https://www.amazon.com.be/dp/"+asin,
+    "CA":"https://www.amazon.ca/dp/"+asin,
+    "AU":"https://www.amazon.com.au/dp/"+asin,
+    "JP":"https://www.amazon.co.jp/dp/"+asin,
+    "MX":"https://www.amazon.com.mx/dp/"+asin,
+    "US":"https://www.amazon.com/dp/"+asin,
+    "DEFAULT":"https://www.amazon.com/dp/"+asin
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const override = params.get("store");
+  if (override) {
+    const tld = {
+      "us":"US","uk":"GB","gb":"GB","de":"DE","fr":"FR","it":"IT","es":"ES","nl":"NL",
+      "se":"SE","pl":"PL","be":"BE","ca":"CA","au":"AU","jp":"JP","mx":"MX"
+    }[override.toLowerCase()];
+    if (tld && map[tld]) { window.location.replace(map[tld]); return; }
+  }
+
+  const locale = (navigator.language || navigator.userLanguage || "en-US").toUpperCase();
+  const cc = locale.split("-")[1] || "US";
+  const target = map[cc] || map.DEFAULT;
+  setTimeout(function(){ window.location.replace(target); }, 200);
+})();
+</script>
+</body>
+</html>
